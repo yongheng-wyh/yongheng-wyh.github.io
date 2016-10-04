@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>SSH key | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="ssh key," />
+  
+
+  <meta name="description" content="SSH key参考：http://www.jianshu.com/p/31cbbbc5f9fa/ssh key
+
+1.检查SSH keys 是否存在输入下面的命令，如果有文件id_rsa.pub 或 id_dsa.pub，则直接进入步骤3将SSH key添加到GitHub中，否则进入第二步生成SSH key    ls -al ~/.ssh  
+2.生成SSH key第一步：生成public/pr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH key">
+<meta property="og:url" content="http://www.google.com/2016/10/04/SSH key/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SSH key参考：http://www.jianshu.com/p/31cbbbc5f9fa/ssh key
+
+1.检查SSH keys 是否存在输入下面的命令，如果有文件id_rsa.pub 或 id_dsa.pub，则直接进入步骤3将SSH key添加到GitHub中，否则进入第二步生成SSH key    ls -al ~/.ssh  
+2.生成SSH key第一步：生成public/pr">
+<meta property="og:image" content="http://7xqmjb.com1.z0.glb.clouddn.com/20161004932514739077489519.jpg">
+<meta property="og:image" content="http://7xqmjb.com1.z0.glb.clouddn.com/201610045597114739080387301.jpg">
+<meta property="og:updated_time" content="2016-10-04T05:26:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSH key">
+<meta name="twitter:description" content="SSH key参考：http://www.jianshu.com/p/31cbbbc5f9fa/ssh key
+
+1.检查SSH keys 是否存在输入下面的命令，如果有文件id_rsa.pub 或 id_dsa.pub，则直接进入步骤3将SSH key添加到GitHub中，否则进入第二步生成SSH key    ls -al ~/.ssh  
+2.生成SSH key第一步：生成public/pr">
+<meta name="twitter:image" content="http://7xqmjb.com1.z0.glb.clouddn.com/20161004932514739077489519.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSH-key"><span class="toc-text">SSH key</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-检查SSH-keys-是否存在"><span class="toc-text">1.检查SSH keys 是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-生成SSH-key"><span class="toc-text">2.生成SSH key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-将ssh-key添加到GitHub中"><span class="toc-text">3.将ssh key添加到GitHub中</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#git-config"><span class="toc-text">git config</span></a></li></ol></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-SSH key" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">SSH key</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.10.04</span>
+      </span>
+
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/开发环境/">开发环境</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="SSH-key"><a href="#SSH-key" class="headerlink" title="SSH key"></a>SSH key</h1><p>参考：<a href="http://www.jianshu.com/p/31cbbbc5f9fa/" target="_blank" rel="external">http://www.jianshu.com/p/31cbbbc5f9fa/</a><br>ssh key</p>
+<p><img src="http://7xqmjb.com1.z0.glb.clouddn.com/20161004932514739077489519.jpg" alt="20161004932514739077489519.jpg"></p>
+<h3 id="1-检查SSH-keys-是否存在"><a href="#1-检查SSH-keys-是否存在" class="headerlink" title="1.检查SSH keys 是否存在"></a>1.检查SSH keys 是否存在</h3><p>输入下面的命令，如果有文件id_rsa.pub 或 id_dsa.pub，则直接进入步骤3将SSH key添加到GitHub中，否则进入第二步生成SSH key<br>    ls -al ~/.ssh<br>  <img src="http://7xqmjb.com1.z0.glb.clouddn.com/201610045597114739080387301.jpg" alt="201610045597114739080387301.jpg"></p>
+<h3 id="2-生成SSH-key"><a href="#2-生成SSH-key" class="headerlink" title="2.生成SSH key"></a>2.生成SSH key</h3><p>第一步：生成public/private rsa key pair</p>
+<pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
+</code></pre><p>第二步：输入passphrase（本步骤可以跳过）<br>设置passphrase后，进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些“失误</p>
+<pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+</code></pre><p>第三步：将新生成的key添加到ssh-agent中(ssh-agent启动之后，如果通过公钥做身份验证，只需第一次输入密码，<br>以后ssh-agent会帮你自动输入)</p>
+<pre><code>#start the ssh-agent in the background
+eval &quot;$(ssh-agent -s)&quot;
+Agent pid 59566
+ssh-add ~/.ssh/id_rsa
+</code></pre><h3 id="3-将ssh-key添加到GitHub中"><a href="#3-将ssh-key添加到GitHub中" class="headerlink" title="3.将ssh key添加到GitHub中"></a>3.将ssh key添加到GitHub中</h3><p>用自己喜欢的文本编辑器打开id_rsa.pub文件，里面的信息即为SSH key，将这些信息复制到GitHub的Add SSH key页面即可</p>
+<p>直接将SSH key从文件拷贝到粘贴板中</p>
+<ul>
+<li><p>mac</p>
+<pre><code>pbcopy &lt; ~/.ssh/id_rsa.pub
+# Copies the contents of the  id_rsa.pub file to your clipboard
+</code></pre></li>
+<li><p>windows</p>
+<pre><code>clip &lt; ~/.ssh/id_rsa.pub
+</code></pre></li>
+</ul>
+<h4 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h4><p>Git有一个工具被称为git config，它允许你获得和设置配置变量；这些变量可以控制Git的外观和操作的各个方面。这些变量可以被存储在三个不同的位置：  </p>
+<ul>
+<li><p>1./etc/gitconfig 文件：包含了适用于系统所    有用户和所有库的值。如果你传递参数选项’–system’ 给 git config，它将明确的读和写这个文件。  </p>
+</li>
+<li><p>2.~/.gitconfig 文件 ：具体到你的用户。你可以通过传递–global 选项使Git 读或写这个特定的文件。</p>
+</li>
+<li><p>3.位于git目录的config文件 (也就是 .git/config) ：无论你当前在用的库是什么，特定指向该单一的库。每个级别重写前一个级别的值。因此，在.git/config中的值覆盖了在/etc/gitconfig中的同一个值。</p>
+</li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
