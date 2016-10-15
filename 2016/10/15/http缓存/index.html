@@ -15,17 +15,44 @@
     <meta name="keywords" content="http,缓存," />
   
 
-  <meta name="description" content="直接上流程图">
+  <meta name="description" content="直接上流程图
+http首部字段 –缓存相关
+Expires –实体首部字段：将资源失效日期告诉客户端；
+
+缓存服务器 收到（来自源服务器）含有首部字段 expires的响应后，会以缓存来应答请求
+在expires指定字段值时间之前 响应的副本（缓存服务器或者浏览器的）会一直被保存
+在expires指定字段值时间之后，缓存服务器在请求发过来时，会转向源服务器请求资源
+
+
+不建议使用， 绝对时间 服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="http缓存">
 <meta property="og:url" content="http://www.google.com/2016/10/15/http缓存/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="直接上流程图">
+<meta property="og:description" content="直接上流程图
+http首部字段 –缓存相关
+Expires –实体首部字段：将资源失效日期告诉客户端；
+
+缓存服务器 收到（来自源服务器）含有首部字段 expires的响应后，会以缓存来应答请求
+在expires指定字段值时间之前 响应的副本（缓存服务器或者浏览器的）会一直被保存
+在expires指定字段值时间之后，缓存服务器在请求发过来时，会转向源服务器请求资源
+
+
+不建议使用， 绝对时间 服务">
 <meta property="og:image" content="http://7xqmjb.com1.z0.glb.clouddn.com/2016101527663http缓存流程图.png">
-<meta property="og:updated_time" content="2016-10-15T06:32:34.000Z">
+<meta property="og:updated_time" content="2016-10-15T06:38:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http缓存">
-<meta name="twitter:description" content="直接上流程图">
+<meta name="twitter:description" content="直接上流程图
+http首部字段 –缓存相关
+Expires –实体首部字段：将资源失效日期告诉客户端；
+
+缓存服务器 收到（来自源服务器）含有首部字段 expires的响应后，会以缓存来应答请求
+在expires指定字段值时间之前 响应的副本（缓存服务器或者浏览器的）会一直被保存
+在expires指定字段值时间之后，缓存服务器在请求发过来时，会转向源服务器请求资源
+
+
+不建议使用， 绝对时间 服务">
 <meta name="twitter:image" content="http://7xqmjb.com1.z0.glb.clouddn.com/2016101527663http缓存流程图.png">
 
   
@@ -159,8 +186,8 @@
 
 
   <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts List</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#直接上流程图"><span class="toc-text">直接上流程图</span></a></li></ol>
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#直接上流程图"><span class="toc-text">直接上流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http首部字段-–缓存相关"><span class="toc-text">http首部字段 –缓存相关</span></a></li></ol>
   </div>
 
 
@@ -194,6 +221,59 @@
   <div class="article-content">
     
       <h3 id="直接上流程图"><a href="#直接上流程图" class="headerlink" title="直接上流程图"></a>直接上流程图</h3><p><img src="http://7xqmjb.com1.z0.glb.clouddn.com/2016101527663http缓存流程图.png" alt="2016101527663http缓存流程图.png"></p>
+<h3 id="http首部字段-–缓存相关"><a href="#http首部字段-–缓存相关" class="headerlink" title="http首部字段 –缓存相关"></a>http首部字段 –缓存相关</h3><ul>
+<li><p>Expires –实体首部字段：将资源失效日期告诉客户端；</p>
+<ul>
+<li>缓存服务器 收到（来自源服务器）含有首部字段 expires的响应后，会以缓存来应答请求<ul>
+<li>在expires指定字段值时间之前 响应的副本（缓存服务器或者浏览器的）会一直被保存</li>
+<li>在expires指定字段值时间之后，缓存服务器在请求发过来时，会转向源服务器请求资源</li>
+</ul>
+</li>
+<li>不建议使用， 绝对时间 服务器时钟可能不同步</li>
+</ul>
+</li>
+<li><p>ETag–响应首部字段：资源的匹配信息，告诉客户端实体标识</p>
+<ul>
+<li>服务器为每份资源分配ETag,资源更新时ETag也需要更新-服务器做</li>
+</ul>
+</li>
+<li><p>If-None-Match – 请求首部字段：比较实体标识，值为上次服务返回的响应首部里ETag值</p>
+<ul>
+<li>If…条件请求：服务器接收到附带条件的请求后，只有判断条件为真，才执行请求；false呢？</li>
+<li>不一致返回200，一致返回304</li>
+</ul>
+</li>
+<li><p>Last-Modify–实体首部字段:指定资源最终被修改的时间</p>
+</li>
+<li><p>If-Modified-Since–请求首部字段</p>
+<ul>
+<li>有修改，200</li>
+<li>未修改，304</li>
+</ul>
+</li>
+<li><p>cache-contrlol–通用首部字段 ：防止从缓存中返回过期的资源</p>
+<ul>
+<li>针对上述的“Expires时间是相对服务器而言，无法保证和客户端时间统一”的问题，http1.1新增了 Cache-Control 来定义缓存过期时间，若报文中同时出现了 Pragma、Expires 和 Cache-Control，会以 Cache-Control 为准</li>
+<li>no-cache:强制向源服务器再次验证/缓存前必须先确认其有效性</li>
+<li>no-store：不缓存请求或响应的任何内容</li>
+<li><p>max-age=[秒]：响应的最大Age值</p>
+</li>
+<li><p>以上三个参数在请求和响应首部字段都有</p>
+</li>
+<li><p>以下是只有响应首部字段有的：</p>
+</li>
+<li><p>s-maxage=[秒]：公共缓存服务器响应的最大Age值</p>
+</li>
+<li>public</li>
+<li>private</li>
+</ul>
+</li>
+</ul>
+<pre><code>相关资源
+
+http://www.techweb.com.cn/network/system/2016-01-05/2252395.shtml
+</code></pre><p><a href="http://www.cnblogs.com/vajoy/p/5341664.html" target="_blank" rel="external">http://www.cnblogs.com/vajoy/p/5341664.html</a><br><a href="https://www.bokeyy.com/post/200-ok-from-cache-vs-304-not-modified.html" target="_blank" rel="external">https://www.bokeyy.com/post/200-ok-from-cache-vs-304-not-modified.html</a></p>
+<p>chrome控制台下的Frames即展示的是浏览器的http文件级缓存。</p>
 
     
   </div>
@@ -216,7 +296,7 @@
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">Close</span>
+      <span id="close" class="btn-close">关闭</span>
     </div>
     <hr>
     <div class="modal-body">
